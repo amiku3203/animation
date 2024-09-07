@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Popups Sliding to Center with Images</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .popup {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            background-size: cover;
+            background-position: center;
+            animation-duration: 4s, 3s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out;
+            border: 2px solid rgb(250, 66, 5);
+            border-radius: 50%;
+        }
+
+        .top-left {
+            top: 0;
+            left: 0;
+            animation-name: slideFromTopLeft, fadeOut;
+            animation-delay: 0s, 4s;
+            background-image: url('uploads/google.jpg');
+        }
+
+        .top-right {
+            top: 0;
+            right: 0;
+            animation-name: slideFromTopRight, fadeOut;
+            animation-delay: 0s, 4s;
+            background-image: url('uploads/un.jpg');
+        }
+
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+            animation-name: slideFromBottomLeft, fadeOut;
+            animation-delay: 0s, 4s;
+            background-image: url('uploads/face.jpg');
+        }
+
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            animation-name: slideFromBottomRight, fadeOut;
+            animation-delay: 0s, 4s;
+            background-image: url('uploads/what.jpg');
+        }
+
+        @keyframes slideFromTopLeft {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(calc(50vw - 150px), calc(50vh - 150px));
+            }
+        }
+
+        @keyframes slideFromTopRight {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(calc(-50vw + 150px), calc(50vh - 150px));
+            }
+        }
+
+        @keyframes slideFromBottomLeft {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(calc(50vw - 150px), calc(-50vh + 150px));
+            }
+        }
+
+        @keyframes slideFromBottomRight {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(calc(-50vw + 150px), calc(-50vh + 150px));
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation:fadeIn 20s forwards, fadeOutContent 4s forwards 4s; /* Appear after 4 seconds */
+            font-size: 24px;
+            color: rgb(253, 83, 5);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeOutContent {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+        /* Media query for mobile devices */
+        @media (max-width: 600px) {
+            .popup {
+                width: 60px;
+                height: 60px;
+            }
+            .content {
+                font-size: 13px;
+                text-align: center;
+            }
+
+            @keyframes slideFromTopLeft {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                100% {
+                    transform: translate(calc(40vw - 90px), calc(50vh - 90px));
+                }
+            }
+
+            @keyframes slideFromTopRight {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                100% {
+                    transform: translate(calc(-40vw + 90px), calc(50vh - 90px));
+                }
+            }
+
+            @keyframes slideFromBottomLeft {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                100% {
+                    transform: translate(calc(40vw - 90px), calc(-50vh + 90px));
+                }
+            }
+
+            @keyframes slideFromBottomRight {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                100% {
+                    transform: translate(calc(-40vw + 90px), calc(-50vh + 90px));
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Popups sliding to the center -->
+    <div class="popup top-left"></div>
+    <div class="popup top-right"></div>
+    <div class="popup bottom-left"></div>
+    <div class="popup bottom-right"></div>
+
+    <!-- Content that will appear at the center -->
+    <div class="content">
+        <h3>Team Bizto India</h3>
+        <center><h3>Lorem Team</h3></center>
+    </div>
+</body>
+
+</html>
